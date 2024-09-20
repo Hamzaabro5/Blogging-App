@@ -43,7 +43,7 @@ function Navbar() {
 
         <div class="avatar">
               <Link to="profile">
-      <div class="ring-primary ring-offset-base-100 w-12 ms-10 me-2 rounded-full ring ring-offset-2">
+      <div class="ring-success ring-offset-base-300 w-10 ms-10 me-2 rounded-full ring ring-offset-2">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/1200px-Windows_10_Default_Profile_Picture.svg.png" />
       </div>
               </Link>
