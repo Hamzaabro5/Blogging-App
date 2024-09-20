@@ -8,7 +8,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
   } from "firebase/auth";
-  import app from "./firebaseconfig";
+  import app from "./config";
   import {
     getFirestore,
     collection,
