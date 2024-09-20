@@ -8,6 +8,7 @@ import Home from './Pages/Home.jsx'
 import Login from './Pages/Login.jsx'
 import Register from './Pages/Register.jsx'
 import Dashboard from './Pages/Dashboard.jsx'
+import Profile from './Pages/Profile.jsx'
 
 
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: `dashboard`,
                 element: <Dashboard />
+            },
+            {
+                path: `profile`,
+                element: <Profile />
             }
 
         ]
