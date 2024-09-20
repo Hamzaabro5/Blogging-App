@@ -29,8 +29,8 @@ const Login = () => {
     }
   }
   return (
-    <div className='text-center'>
-      <h1 className='text-6xl font-bold mt-5 mb-24 tracking-wider'>Login</h1>
+    <div className='text-center bg-base-200 py-20 mt-20 mx-auto rounded-3xl'>
+      <h1 className='text-6xl font-black mb-14 tracking-wider text-error'>Login</h1>
       <form onSubmit={handleSubmit(loginUserFromFirebase)}>
         <input className='input input-bordered input-md input-primary w-full max-w-xs text-xl' type="email" placeholder='Email' {...register("email", { required: true })} /><br />
         {errors.email && <span className='text-error font-semibold'>This field is required</span>}

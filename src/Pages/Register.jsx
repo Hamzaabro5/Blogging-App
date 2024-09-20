@@ -36,8 +36,8 @@ const Register = () => {
 
   }
   return (
-    <div className='text-center'>
-      <h1 className='text-6xl font-bold mt-5 mb-24 tracking-wider'>Signup</h1>
+    <div className='text-center bg-base-200 py-16 mt-20 mx-auto rounded-3xl'>
+      <h1 className='text-6xl font-black mb-14 tracking-wider text-error'>Signup</h1>
       <form onSubmit={loginUserFromFirebase}>
         <input className='input input-bordered input-lg input-primary w-full max-w-xs' type="text" placeholder='Full Name' ref={fullName} /> <br /> <br />
         <input className='input input-bordered input-lg input-primary w-full max-w-xs' type="email" placeholder='Email Address' ref={email} /><br /> <br />
