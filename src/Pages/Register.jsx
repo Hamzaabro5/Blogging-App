@@ -26,6 +26,7 @@ const Register = () => {
         fullName: fullName.current.value,
         profileImage: userProfileImageUrl
       })
+      alert(`Welcome ${fullName.current.value}`)
       navigate(`/login`)
       console.log(userData);
 
