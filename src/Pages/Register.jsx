@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { signUpUser, uploadImage } from '../Firebase/firebasemethods'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const fullName = useRef()
@@ -46,6 +46,7 @@ const Register = () => {
         <input className="file-input file-input-bordered file-input-primary w-full max-w-xs" type="file" placeholder='enter your profile picture' ref={profileImage} /><br /> <br />
         <button className='btn btn-success btn-outline' type='submit'>Signup</button>
       </form>
+      <h1 className='font-bold text-xl mt-5'>Already a User? <Link to="/login" className="text-blue-700 underline">Login</Link></h1>
     </div>
   )
 }

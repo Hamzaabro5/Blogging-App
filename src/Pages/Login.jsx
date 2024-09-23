@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useForm } from "react-hook-form"
 import { loginUser } from '../Firebase/firebasemethods'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const {
@@ -25,7 +25,7 @@ const Login = () => {
 
     } catch (error) {
       console.error(error)
-      alert(`User Not Found!`)
+      alert(`Incorrect Information`)
     }
   }
   return (
@@ -40,6 +40,7 @@ const Login = () => {
          <br />
         <button className='btn btn-success btn-outline mt-3 text-lg' type='submit'>Login</button>
       </form>
+      <h1 className='font-bold text-xl mt-5'>Not a User? <Link to="/register" className="text-blue-700 underline">Register</Link></h1>
     </div>
   )
 }
