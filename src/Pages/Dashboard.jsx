@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
-import { auth, getData, sendData } from '../firebase/firebasemethods'
+import { auth, getData, sendData } from '../Firebase/firebasemethods'
 import { onAuthStateChanged } from 'firebase/auth'
 
 const Dashboard = () => {
@@ -13,17 +13,15 @@ const Dashboard = () => {
 
   const [blogs, setBlogs] = useState([])
 
-  useEffect(() => {
 
-      onAuthStateChanged(auth , async(user)=>{
-        if(user){
-          console.log(user.uid)
-          const blogsData = await getData("blogs" , user.uid)
-          console.log(blogsData)
-          setBlogs([...blogsData])
-        }
-      })
-  }, [])
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+    } else {
+      alert(`You are not logged in Please logged in first to access Dashboard.`)
+      window.location = `./login`
+    }
+  });
 
   const sendDatatoFirestore = async (data) => {
     console.log(data)
