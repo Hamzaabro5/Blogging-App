@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth, getData, sendData } from '../Firebase/firebasemethods'
 import { onAuthStateChanged } from 'firebase/auth'
+import { getDocs, query } from 'firebase/firestore'
 
 const Dashboard = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
 
   const [blogs, setBlogs] = useState([])
 
 
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
       const uid = user.uid;
+      const blogsData = await getData("blogs", user.uid)
+        console.log(blogsData)
+        setBlogs([...blogsData])
+
     } else {
       alert(`You are not logged in Please logged in first to access Dashboard.`)
       window.location = `./login`
@@ -65,9 +69,12 @@ const Dashboard = () => {
     <h1 className='text-center font-black my-10 text-4xl text-primary tracking-wider'>My Blogs</h1>
       <div>
         {blogs.length > 0 ? blogs.map((item, index) => {
-          return <div key={index} className="card m-5 p-3">
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
+          return <div key={index} className="card m-5 p-5 border overflow-hidden">
+            <h1 className='text-4xl font-bold'> {item.title}</h1>
+            <p className='mt-5 truncate'>{item.description}</p>
+            <div className='mt-5'>
+            <button className='btn btn-sm btn-accent btn-outline'>View More</button>
+            </div>
           </div>
         }) : <h1 className='text-3xl pt-10 font-bold'>No blogs are availible at a time.</h1>}
       </div>

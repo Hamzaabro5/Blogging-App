@@ -16,7 +16,6 @@ const Register = () => {
     console.log(password.current.value)
     console.log(fullName.current.value)
     console.log(profileImage.current.files[0])
-
     const userProfileImageUrl = await uploadImage(profileImage.current.files[0], email.current.value)
 
     try {
@@ -34,6 +33,7 @@ const Register = () => {
       console.error(error);
 
     }
+    
 
   }
   return (
