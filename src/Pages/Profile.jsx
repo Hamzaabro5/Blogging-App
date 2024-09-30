@@ -8,7 +8,7 @@ function Profile() {
       const uid = user.uid;
       // ...
     } else {
-      alert(`You are not logged in Please logged in first to access Profile.`)
+      // alert(`You are not logged in Please logged in first to access Profile.`)
       window.location = `./login`
     }
   });

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../Firebase/firebasemethods'
 import { getAllData } from '../Firebase/firebasemethods'
-import Navbar from '../components/Navbar'
 
 const Home = () => {
   const [alldata, setData] = useState([])

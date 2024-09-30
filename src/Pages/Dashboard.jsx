@@ -22,7 +22,7 @@ const Dashboard = () => {
         setBlogs([...blogsData])
 
     } else {
-      alert(`You are not logged in Please logged in first to access Dashboard.`)
+      // alert(`You are not logged in Please logged in first to access Dashboard.`)
       window.location = `./login`
     }
   });
