@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form"
 import { loginUser } from '../Firebase/firebasemethods'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,7 +7,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
 

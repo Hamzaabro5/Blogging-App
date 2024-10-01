@@ -7,8 +7,7 @@ const Home = () => {
   const [alldata, setData] = useState([])
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-        console.log('user login ha')
+    onAuthStateChanged(auth, async () => {
         let getBlogsFromDb = await getAllData("blogs")
         setData([...getBlogsFromDb])
         console.log(getBlogsFromDb);
@@ -20,10 +19,16 @@ const Home = () => {
   return (
     <>
      <div>
+     <h1 className='text-7xl text-center my-10 font-black mb-14 tracking-wider text-error'>All Blogs</h1>
         {alldata.length > 0 ? alldata.map((item, index) => {
-          return <div key={index} className="card m-5 p-5 border overflow-hidden">
+                return <div key={index} className="card m-5 p-5 border overflow-hidden">
+          <div class="avatar mb-5">
+                <div class="w-10 rounded-full">
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+              </div>
             <h1 className='text-4xl font-bold'> {item.title}</h1>
-            <p className='mt-5 truncate'>{item.description}</p>
+            <p className='mt-3 truncate'>{item.description}</p>
             <div className='mt-5'>
             <button className='btn btn-sm btn-accent btn-outline'>View all from this user</button>
             </div>

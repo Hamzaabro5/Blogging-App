@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth, getData, sendData } from '../Firebase/firebasemethods'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getDocs, query } from 'firebase/firestore'
 
 const Dashboard = () => {
   const {
@@ -66,12 +65,17 @@ const Dashboard = () => {
     </div>
 
 
-    <h1 className='text-center font-black my-10 text-4xl text-primary tracking-wider'>My Blogs</h1>
+    <h1 className='text-center font-black my-10 text-5xl text-error underline tracking-wider'>My Blogs</h1>
       <div>
         {blogs.length > 0 ? blogs.map((item, index) => {
           return <div key={index} className="card m-5 p-5 border overflow-hidden">
+              <div class="avatar mb-5">
+                <div class="w-10 rounded-full">
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+              </div>
             <h1 className='text-4xl font-bold'> {item.title}</h1>
-            <p className='mt-5 truncate'>{item.description}</p>
+            <p className='mt-3 truncate'>{item.description}</p>
             <div className='mt-5'>
             <button className='btn btn-sm btn-accent btn-outline'>View More</button>
             </div>

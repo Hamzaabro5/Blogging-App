@@ -43,13 +43,13 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-      <li className='text-xl'><a><Link to=''>Home</Link></a></li>
-      <li className='text-xl'><a><Link to='dashboard'>Dashboard</Link></a></li>
+      <Link to=''><li className='text-xl'><a>Home</a></li></Link>
+      <Link to='dashboard'><li className='text-xl'><a>Dashboard</a></li></Link>
       </ul>
     </div>
     <div class="navbar-end gap-3">
-    <button className='btn btn-outline  text-white hidden lg:flex'><Link to='register'>Sign Up</Link></button>
-    <button className='btn btn-outline btn-accent text-white hidden lg:flex'><Link to='login'>Login</Link></button>
+    <Link to='register'> <button className='btn btn-outline  text-white hidden lg:flex'>Sign Up</button></Link> 
+    <Link to='login'><button className='btn btn-outline btn-accent text-white hidden lg:flex'>Login</button></Link>
     <button onClick={userLogout } className='btn btn-outline btn-error hidden lg:flex ms-10'>Logout</button>
     <div class="avatar">
                 <Link to="profile">
