@@ -8,12 +8,10 @@ const Home = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
-      if (user) {
         console.log('user login ha')
         let getBlogsFromDb = await getAllData("blogs")
         setData([...getBlogsFromDb])
         console.log(getBlogsFromDb);
-      }
     })
   }, [])
 
