@@ -8,6 +8,7 @@
       signOutUser()
       alert('Logged Out');
       navigate('/login')
+      
   }
 
     return (

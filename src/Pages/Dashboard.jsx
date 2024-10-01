@@ -75,7 +75,7 @@ const Dashboard = () => {
                 </div>
               </div>
             <h1 className='text-4xl font-bold'> {item.title}</h1>
-            <p className='mt-3 truncate'>{item.description}</p>
+            <p className='mt-3 truncate text-xl'>{item.description}</p>
             <div className='mt-5'>
             <button className='btn btn-sm btn-accent btn-outline'>View More</button>
             </div>

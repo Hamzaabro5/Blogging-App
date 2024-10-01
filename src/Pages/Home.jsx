@@ -28,17 +28,17 @@ const Home = () => {
                 </div>
               </div>
             <h1 className='text-4xl font-bold'> {item.title}</h1>
-            <p className='mt-3 truncate'>{item.description}</p>
+            <p className='mt-3 truncate text-xl'>{item.description}</p>
             <div className='mt-5'>
             <button className='btn btn-sm btn-accent btn-outline'>View all from this user</button>
             </div>
           </div>
-        }) :<div className="flex w-full flex-col gap-4 mt-5">
+        }) : <div className="flex w-full flex-col gap-4 mt-5">
         <div className="skeleton h-72 w-full"></div>
         <div className="skeleton h-14 w-28"></div>
         <div className="skeleton h-14 w-full"></div>
         <div className="skeleton h-14 w-full"></div>
-      </div>
+      </div> 
       }
       </div>
     </>
