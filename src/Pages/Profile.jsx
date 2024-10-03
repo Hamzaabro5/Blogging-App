@@ -1,26 +1,45 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import React from 'react'
-import { auth } from '../Firebase/firebasemethods';
+import React, { useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { auth, db } from '../Firebase/firebasemethods';
+import { useNavigate } from 'react-router-dom';
 
-function Profile() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      // ...
-    } else {
-      // alert(`You are not logged in Please logged in first to access Profile.`)
-      window.location = `./login`
-    }
-  });
+const Profile = () => {
+    const [data, Setdata] = useState([])
+    const navigate = useNavigate()
 
-  return (
-    <>
-    <h1 className='text-7xl text-center my-10 font-black mb-14 tracking-wider text-error'>Profile</h1>
-    <div className='bg-red-50 py-10'>
-      {/* <img src="https://firebasestorage.googleapis.com/v0/b/blogging-app-61c5a.appspot.com/o/hamzaabro%40gmail.com?alt=media&token=705e1292-7395-4789-b125-c3a4f9897bac" width="300px" alt="" /> */}
-    </div>
-    </>
-  )
+    useEffect(() => {
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+              const uid = user.uid
+                    const q = query(collection(db, "users"), where("id", "==", user.uid));
+                    const querySnapshot = await getDocs(q);
+                    querySnapshot.forEach((doc) => {
+                        console.log(doc.data());
+                        Setdata(doc.data())
+                    });
+                    console.log(user);
+            } else {
+            // alert('User not found | Please Login First');
+            navigate(`/login`)
+            }
+        })
+    }, [])
+
+    return (
+        <>
+                <h1 className='text-center text-5xl my-5 font-bold'>My Profile</h1>
+            <section className="text-gray-600 body-font container mx-auto p-2"> 
+                <div className="container mx-auto flex px-5 py-14 items-center justify-center flex-col" bis_skin_checked={1}>
+                    <h1 className="title-font sm:text-5xl text-2xl mb-4 font-medium text-gray-900">Full Name: <span>{data.fullName}</span></h1>
+                    <h1 className="title-font sm:text-5xl text-2xl my-4 font-medium text-gray-900">Email: <span>{data.email}</span></h1>
+                    <img className="lg:w-2/6 md:w-3/6 w-3/6 mb-10 object-cover object-center rounded-lg border-l-pink-900" alt="profile_image" src={data.profileImage}/>
+                </div>
+            </section>
+
+
+        </>
+    )
 }
 
 export default Profile

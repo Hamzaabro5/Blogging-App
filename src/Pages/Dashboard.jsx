@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth, getData, sendData } from '../Firebase/firebasemethods'
 import { onAuthStateChanged } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const {
@@ -11,6 +12,7 @@ const Dashboard = () => {
   } = useForm()
 
   const [blogs, setBlogs] = useState([])
+  const navigate = useNavigate()
 
 
   onAuthStateChanged(auth, async (user) => {
@@ -21,8 +23,8 @@ const Dashboard = () => {
         setBlogs([...blogsData])
 
     } else {
-      // alert(`You are not logged in Please logged in first to access Dashboard.`)
-      window.location = `./login`
+      // alert('User not found | Please Login First');
+      navigate(`/login`)
     }
   });
 
@@ -69,8 +71,8 @@ const Dashboard = () => {
       <div>
         {blogs.length > 0 ? blogs.map((item, index) => {
           return <div key={index} className="card m-5 p-5 border overflow-hidden">
-              <div class="avatar mb-5">
-                <div class="w-10 rounded-full">
+              <div className="avatar mb-5">
+                <div className="w-10 rounded-full">
                   <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                 </div>
               </div>

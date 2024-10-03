@@ -24,7 +24,7 @@ const Home = () => {
                 return <div key={index} className="card m-5 p-5 border overflow-hidden">
           <div class="avatar mb-5">
                 <div class="w-10 rounded-full">
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  <img src="https://e7.pngegg.com/pngimages/507/702/png-clipart-profile-icon-simple-user-icon-icons-logos-emojis-users-thumbnail.png" />
                 </div>
               </div>
             <h1 className='text-4xl font-bold'> {item.title}</h1>
