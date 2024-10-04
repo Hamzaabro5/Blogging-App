@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth, getData, sendData } from '../Firebase/firebasemethods'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -9,9 +9,11 @@ const Dashboard = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
 
   const [blogs, setBlogs] = useState([])
+  const [loading , setLoading] = useState(false)
   const navigate = useNavigate()
 
 
@@ -19,27 +21,31 @@ const Dashboard = () => {
     if (user) {
       const uid = user.uid;
       const blogsData = await getData("blogs", user.uid)
-        console.log(blogsData)
         setBlogs([...blogsData])
-
+        console.log(user);
+        
     } else {
-      // alert('User not found | Please Login First');
       navigate(`/login`)
     }
   });
 
   const sendDatatoFirestore = async (data) => {
     console.log(data)
+    setLoading(true)
     try {
       const response = await sendData({
         title: data.title,
         description: data.description,
-        uid: auth.currentUser.uid
+        uid: auth.currentUser.uid,
       }, 'blogs')
+      reset()
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
       blogs.push({
         title: data.title,
         description: data.description,
-        uid: auth.currentUser.uid
+        uid: auth.currentUser.uid,
       })
       setBlogs([...blogs])
       console.log(response);
@@ -62,7 +68,11 @@ const Dashboard = () => {
         <br />
         <textarea className='textarea textarea-bordered textarea-primary w-full max-w-xs mt-5 text-lg' cols='25' rows=' 5' placeholder='Blogs Description' {...register("description", { required: true })} ></textarea> <br />
         {errors.description && <span className='text-error font-bold'>This field is required*</span>}<br /><br />
-        <button className='btn btn-info btn-outline mt-5 text-lg' type='submit'>Publish Blog</button>
+        { loading ? (
+      <h1 className="loading loading-lg text-center btn btn-info btn-outline mt-5 text-lg"></h1>
+    )
+    :
+    ( <button className='btn btn-info btn-outline mt-5 text-lg' type='submit'>Publish Blog</button>)}
       </form>
     </div>
 

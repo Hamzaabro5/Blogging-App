@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {auth, db, signOutUser } from '../Firebase/firebasemethods';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -13,6 +13,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
   }
 
   const [userData, setuserData] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -48,26 +49,24 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
               d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
         </div>
-        <ul
-          tabIndex="0"
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 py-5 gap-3 shadow">
-        <li className='text-black font-bold'><a className='text-xl'><Link to=''>Home</Link></a></li>
-        <li className='text-black font-bold'><a className='text-xl'><Link to='dashboard'>Dashboard</Link></a></li>
-        <li className="text-black font-bold"><a className='text-xl'><Link to='register'>Sign Up</Link></a></li>
-        <li className="text-black font-bold"><a className='text-xl'><Link to='login'>Login</Link></a></li>
-        <li className="text-black font-bold"><a className='text-xl' onClick={userLogout}>Logout</a></li>
+        <ul tabIndex="0" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 py-5 gap-5 shadow">
+        <Link to=''><li className='text-black font-bold text-xl'>Home</li></Link>
+        <Link to='dashboard'><li className='text-black font-bold text-xl'>Dashboard</li></Link>
+        <Link to='register'><li className="text-black font-bold text-xl">Sign Up</li></Link>
+        <Link to='login'><li className="text-black font-bold text-xl">Login</li></Link>
+        <li className="text-black font-bold text-xl"  onClick={userLogout}>Logout</li>
         </ul>
       </div>
-      <a className="btn btn-ghost text-xl"><Link to="">Blogging App</Link></a>
+      <Link to=""><h1 className="btn btn-ghost text-xl">Blogging App</h1></Link>
     </div>
     <div className="navbar-center hidden lg:flex">
-      <ul className="menu menu-horizontal px-1">
-      <Link to=''><li className='text-xl'><a>Home</a></li></Link>
-      <Link to='dashboard'><li className='text-xl'><a>Dashboard</a></li></Link>
+      <ul className="menu menu-horizontal px-1 gap-5">
+      <Link to=''><li className='text-xl btn btn-outline text-white'>Home</li></Link>
+      <Link to='dashboard'><li className='text-xl btn btn-outline text-white'>Dashboard</li></Link>
       </ul>
     </div>
     <div className="navbar-end gap-3">
-    <Link to='register'> <button className='btn btn-outline  text-white hidden lg:flex'>Sign Up</button></Link> 
+    <Link to='register'> <button className='btn btn-outline btn-warning  text-white hidden lg:flex'>Sign Up</button></Link> 
     <Link to='login'><button className='btn btn-outline btn-accent text-white hidden lg:flex'>Login</button></Link>
     <button onClick={userLogout } className='btn btn-outline btn-error hidden lg:flex ms-10'>Logout</button>
     <div className="avatar">

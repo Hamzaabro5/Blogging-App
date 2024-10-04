@@ -13,8 +13,7 @@ const Home = () => {
         console.log(getBlogsFromDb);
     })
   }, [])
-
-
+  
 
   return (
     <>
@@ -22,8 +21,8 @@ const Home = () => {
      <h1 className='text-7xl text-center my-10 font-black mb-14 tracking-wider text-error'>All Blogs</h1>
         {alldata.length > 0 ? alldata.map((item, index) => {
                 return <div key={index} className="card m-5 p-5 border overflow-hidden">
-          <div class="avatar mb-5">
-                <div class="w-10 rounded-full">
+          <div className="avatar mb-5">
+                <div className="w-10 rounded-full">
                   <img src="https://e7.pngegg.com/pngimages/507/702/png-clipart-profile-icon-simple-user-icon-icons-logos-emojis-users-thumbnail.png" />
                 </div>
               </div>
