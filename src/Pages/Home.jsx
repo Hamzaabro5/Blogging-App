@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <>
-     <div>
+     <div className='bg-white'>
      <h1 className='text-7xl text-center my-10 font-black mb-14 tracking-wider text-error'>All Blogs</h1>
         {alldata.length > 0 ? alldata.map((item, index) => {
                 return <div key={index} className="card m-5 p-5 border overflow-hidden">
