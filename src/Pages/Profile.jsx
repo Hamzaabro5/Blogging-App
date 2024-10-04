@@ -33,7 +33,7 @@ const Profile = () => {
                 <div className="container mx-auto flex px-5 py-14 items-center justify-center flex-col" bis_skin_checked={1}>
                     <h1 className="title-font sm:text-5xl text-2xl mb-4 font-medium text-gray-900">Full Name: <span>{data.fullName}</span></h1>
                     <h1 className="title-font sm:text-5xl text-2xl my-4 font-medium text-gray-900">Email: <span>{data.email}</span></h1>
-                    <img className="lg:w-2/6 md:w-3/6 w-3/6 mb-10 object-cover object-center rounded-lg border-l-pink-900" alt="profile_image" src={data.profileImage}/>
+                    <img className="lg:w-2/6 md:w-3/6 w-3/6 mb-10 object-cover object-center rounded-lg border-l-pink-900 mt-5" alt="profile_image" src={data.profileImage}/>
                 </div>
             </section>
 

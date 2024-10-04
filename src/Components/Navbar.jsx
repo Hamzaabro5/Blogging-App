@@ -1,6 +1,6 @@
-  import React, { useEffect, useState } from 'react'
-  import { Link } from 'react-router-dom'
-  import {auth, db, signOutUser } from '../Firebase/firebasemethods';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {auth, db, signOutUser } from '../Firebase/firebasemethods';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -72,7 +72,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
     <button onClick={userLogout } className='btn btn-outline btn-error hidden lg:flex ms-10'>Logout</button>
     <div className="avatar">
                 <Link to="profile">
-        <div className="ring-success ring-offset-base-300 w-10 ms-10 me-2 rounded-full ring ring-offset-2">
+        <div className="ring-success ring-offset-base-300 w-12 h-12 ms-10 me-2 rounded-full ring ring-offset-2">
           <img className='rounded-full' src={userData.profileImage} />
         </div>
                 </Link>
